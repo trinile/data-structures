@@ -14,7 +14,8 @@ var Queue = function() {
 
   someInstance.dequeue = function() {
     items--;
-    return storage[items];
+    return storage[0];
+
   };
 
   someInstance.size = function() {
