@@ -11,6 +11,9 @@ var Stack = function() {
 
 var stackMethods = {
   stackSize: function() {
+    if ( this.items < 0 ) {
+      this.items = 0;
+    }
     return this.items;
   },
 
