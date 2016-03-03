@@ -5,6 +5,7 @@ var Stack = function() {
   someInstance.items = 0;
   someInstance.size = stackMethods.stackSize;
   someInstance.push = stackMethods.stackPush;
+  someInstance.pop = stackMethods.stackPop;
   return someInstance;
 };
 
@@ -15,6 +16,10 @@ var stackMethods = {
 
   stackPush: function() {
     this.items++;
+  },
+
+  stackPop: function() {
+    this.items--;
   }
 };
 
