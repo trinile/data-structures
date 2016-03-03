@@ -27,7 +27,9 @@ var stackMethods = {
 
   pop: function() {
     this.items--;
-    return this.storage[this.items];
+    var lastItem = this.storage[this.items];
+    delete this.storage[this.items];
+    return lastItem;
   }
 };
 
