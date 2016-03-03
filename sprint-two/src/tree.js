@@ -17,6 +17,12 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
+  for (var i = 0; i < this.children.length; i++) {
+    if (target === this.children[i].value) {
+      return true;
+    }
+  }
+  return false;
 };
 
 
