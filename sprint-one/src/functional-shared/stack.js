@@ -6,9 +6,7 @@ var Stack = function() {
   someInstance.storage = {};  
 
   //add properties from stackMethods to someInstance
-  for (var key in stackMethods) {
-    someInstance[key] = stackMethods[key];
-  }
+  _.extend(someInstance, stackMethods);
   return someInstance;
 };
 
