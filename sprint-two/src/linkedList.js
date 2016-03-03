@@ -1,7 +1,6 @@
 var LinkedList = function() {
   var list = {};
   var nodes = 0;
-  // var headCounter = 0;
   list.head = null;
   list.tail = null;
 
@@ -25,9 +24,16 @@ var LinkedList = function() {
     }
     list.head = list[0];
     delete list[nodes];
+    return head.value;
   };
 
   list.contains = function(target) {
+    for (var i = 0; i < nodes; i++) {
+      if (target === list[i].value) {
+        return true;
+      }
+    }
+    return false;
   };
 
   return list;
