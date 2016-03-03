@@ -27,6 +27,7 @@ describe('linkedList', function() {
     linkedList.addToTail(4);
     linkedList.addToTail(5);
     expect(linkedList.head.value).to.equal(4);
+    // debugger
     linkedList.removeHead();
     expect(linkedList.head.value).to.equal(5);
   });
@@ -37,8 +38,13 @@ describe('linkedList', function() {
   });
 
   it('should contain a value that was added', function() {
+
     linkedList.addToTail(4);
     linkedList.addToTail(5);
+    // debugger;
+    linkedList.contains(4);
+    linkedList.contains(5);
+    linkedList.contains(6);
     expect(linkedList.contains(4)).to.equal(true);
     expect(linkedList.contains(5)).to.equal(true);
     expect(linkedList.contains(6)).to.equal(false);
@@ -52,4 +58,12 @@ describe('linkedList', function() {
   });
 
   // add more tests here to test the functionality of linkedList
+  it('should have a value for next node if not the tail node', function() {
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    expect(linkedList.head.value).to.equal(4);
+    expect(linkedList.head.next.value).to.equal(5);
+    linkedList.addToTail(6);
+    expect(linkedList.head.next.next.value).to.equal(6);
+  });
 });
