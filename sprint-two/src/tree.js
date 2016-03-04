@@ -17,16 +17,21 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
-  for (var i = 0; i < this.children.length; i++) {
-    if (target === this.children[i].value) {
-      return true;
+  if (this.children) {
+    for (var i = 0; i < this.children.length; i++) {
+      //if children node value matches target, exit function and return true
+      if (this.children[i].contains(target)) {
+        return true;
+      }
     }
   }
-  return false;
+  //base case: compare current node to target
+  return target === this.value;
 };
-
 
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ addChild: O(1) - constant time complexity;
+ contains: O(n) - linear time complexity. Has to search through the tree.
  */
