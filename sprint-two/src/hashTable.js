@@ -7,22 +7,28 @@ var HashTable = function() {
 
 HashTable.prototype.insert = function(k, v) {
   var index = getIndexBelowMaxForKey(k, this._limit); //index in storage array
-  //index where key-value pair belongs to 
-  //add that key-value pair to a bucket array IN that storage array
-  //key-value pair is added at tuple index 0: key, index 1: value
   if (!this._storage.get(index)) {
     this._storage.set(index, []);
   }
-  this._storage.get(index).push([k, v]);
-  console.log(this._storage.get(index));
-    
+  var bucket = this._storage.get(index);
 
-    var bucket = this._storage.get(index);
-  for (var i = 0; i < bucket.length; i++) {
-    if (bucket[i][0] !== k) {
+  var keyExists = false;
+
+  if (bucket.length === 0) {
+    this._storage.get(index).push([k, v]);
+  } else if (bucket.length) {
+    for (var i = 0; i < bucket.length; i++) {
+      if (bucket[i][0] === k) {
+        bucket[i] = [k, v];
+        keyExists = true;
+        break;
+      }
+    }
+    if (!keyExists) {
       this._storage.get(index).push([k, v]);
-    } 
+    }
   }
+  console.log(bucket);
 };
 
 HashTable.prototype.retrieve = function(k) {
