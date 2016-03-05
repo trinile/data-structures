@@ -24,7 +24,11 @@ describe('binarySearchTree', function() {
     binarySearchTree.insert(2);
     binarySearchTree.insert(3);
     binarySearchTree.insert(7);
+    binarySearchTree.insert(6);
+    binarySearchTree.insert(10);
     expect(binarySearchTree.contains(7)).to.equal(true);
+    expect(binarySearchTree.contains(10)).to.equal(true);
+    expect(binarySearchTree.contains(9)).to.equal(false);
     expect(binarySearchTree.contains(8)).to.equal(false);
   });
 
@@ -33,7 +37,10 @@ describe('binarySearchTree', function() {
     var func = function(value) { array.push(value); };
     binarySearchTree.insert(2);
     binarySearchTree.insert(3);
+    binarySearchTree.insert(10);
+    binarySearchTree.insert(6);
+    binarySearchTree.insert(8);
     binarySearchTree.depthFirstLog(func);
-    expect(array).to.eql([5, 2, 3]);
+    expect(array).to.eql([5, 2, 3, 10, 6, 8]);
   });
 });
