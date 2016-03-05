@@ -73,7 +73,7 @@ describe('DoublylinkedList', function() {
     linkedList.addToTail(6);
     expect(linkedList.head.next.next.value).to.equal(6);
     expect(linkedList.tail.prev.prev.value).to.equal(4);
-    // expect(linkedList.head.prev.value).to.equal(null);
+    expect(linkedList.head.prev).to.equal(null);
   });
 
   it('should add value to the head', function() {
@@ -91,6 +91,7 @@ describe('DoublylinkedList', function() {
     linkedList.addToTail(5);
     linkedList.addToTail(6);
     linkedList.removeTail();
-    expect(linkedList.tail.head.value).to.equal(5);
+    expect(linkedList.tail.value).to.equal(5);
+    expect(linkedList.tail.next).to.equal(null);
   });
 });
