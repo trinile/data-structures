@@ -26,31 +26,45 @@ BinarySearchMethods.insert = function(value) {
 };
 
 BinarySearchMethods.contains = function(value) {
-
-  var isTrue = function(value) {
-    if (value < this.value) {
-      if (this.left.value === value) {
-        return true;
-      }
-      if (this.left) {
-        this.left(contains(value));
-      }
-    } else if (value > this.value) {
-      if (this.right.value === value) {
-        return true;
-      } 
-      if (this.right) {
-        this.right(contains(value));
-      }
-    }
-  };
-  
-  return isTrue(value) === true;
+  if (value === this.value) {
+    return true;
+  } else if (this.left && this.value > value) {
+    return this.left.contains(value);
+  } else if (this.right && value > this.value) {
+    return this.right.contains(value);
+  } else {
+    return false;
+  }
 };
+  // var isTrue = function(value) {
+  //   if (value < this.value) {
+  //     if (this.left.value === value) {
+  //       return true;
+  //     }
+  //     if (this.left) {
+  //       this.left(contains(value));
+  //     }
+  //   } else if (value > this.value) {
+  //     if (this.right.value === value) {
+  //       return true;
+  //     } 
+  //     if (this.right) {
+  //       this.right(contains(value));
+  //     }
+  //   }
+  // };
+  
+  // return isTrue(value) === true;
 
 BinarySearchMethods.depthFirstLog = function(func) {
+  func(this.value);
+  if (this.left) {
+    this.left.depthFirstLog(func);
+  }
+  if (this.right) {
+    this.right.depthFirstLog(func);
+  }
 };
-
 /*
  * Complexity: What is the time complexity of the above functions?
  */
