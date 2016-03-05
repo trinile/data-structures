@@ -2,32 +2,32 @@ var Queue = function() {
   var someInstance = {};
 
   // Use an object with numeric keys to store values
-  var storage = {};
-  var items = 0;
+  var _storage = {};
+  var _items = 0;
 
   // Implement the methods below
 
   someInstance.enqueue = function(value) {
-    storage[items] = value;
-    items++;
+    _storage[_items] = value;
+    _items++;
   };
 
   someInstance.dequeue = function() {
-    items--;
-    var first = storage[0];
+    _items--;
+    var first = _storage[0];
 
-    for (var key in storage) {
+    for (var key in _storage) {
       var nextIndex = Number(key) + 1;
-      var temp = storage[nextIndex];
-      storage[key] = temp;
+      var temp = _storage[nextIndex];
+      _storage[key] = temp;
     }
-    delete storage[items];
+    delete _storage[_items];
     return first;
   };
 
   someInstance.size = function() {
-    items = items < 0 ? 0 : items;
-    return items;
+    _items = _items < 0 ? 0 : _items;
+    return _items;
   };
 
   return someInstance;
